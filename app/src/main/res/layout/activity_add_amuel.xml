@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".AddAmuel">
+
+    <!-- Top toolbar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:title="إضافة عميل"
+        android:titleTextColor="@android:color/white"
+        android:backgroundTint="?attr/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Decorative/logo icon -->
+    <ImageView
+        android:id="@+id/iv_top_icon"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:contentDescription="إضافة عميل"
+        app:srcCompat="@drawable/ic_add_client"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp" />
+
+    <!-- Form container (card) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_form"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        app:layout_constraintTop_toBottomOf="@id/iv_top_icon"
+        app:layout_constraintBottom_toTopOf="@+id/btn_save"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Region -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_region"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:boxStrokeWidth="2dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_region"
+                        android:layout_width="match_parent"
+                        android:layout_height="51dp"
+                        android:hint="المنطقة"
+                        android:inputType="text"
+                        android:imeOptions="actionNext" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Work / Job -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_job"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_job"
+                        android:layout_width="match_parent"
+                        android:layout_height="51dp"
+                        android:hint="العمل"
+                        android:inputType="text"
+                        android:imeOptions="actionNext" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Client name -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_name"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+ >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="51dp"
+                        android:hint="الاسم"
+                        android:inputType="textPersonName"
+                        android:imeOptions="actionNext" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Products (multi-line) -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_products"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_products"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minLines="2"
+                        android:maxLines="4"
+                        android:hint="المنتجات (اسم/كمية)"
+                        android:inputType="textMultiLine"
+                        android:imeOptions="actionNext" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Total price -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_total"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+>
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_total"
+                        android:layout_width="match_parent"
+                        android:layout_height="51dp"
+                        android:hint="إجمالي السعر"
+                        android:inputType="numberDecimal"
+                        android:imeOptions="actionNext" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Downpayment -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_down"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+>
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_downpayment"
+                        android:layout_width="match_parent"
+                        android:layout_height="51dp"
+                        android:hint="المقدم"
+                        android:inputType="numberDecimal"
+                        android:imeOptions="actionNext" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Payment plan (dropdown) -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_plan"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/actv_plan"
+                        android:layout_width="match_parent"
+                        android:layout_height="51dp"
+                        android:hint="نظام القسط"
+                        android:inputType="text"
+                        android:imeOptions="actionNext" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- First installment date (click to pick) -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_first_date"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_first_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="51dp"
+                        android:hint="تاريخ أول قسط"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:inputType="none" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Salesperson (dropdown) -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_salesperson"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/actv_salesperson"
+                        android:layout_width="match_parent"
+                        android:layout_height="51dp"
+                        android:hint="المندوب"
+                        android:inputType="text"
+                        android:imeOptions="actionNext" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Phone -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_phone"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="51dp"
+                        android:hint="رقم الهاتف"
+                        android:inputType="phone"
+                        android:imeOptions="actionDone" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Save button fixed at bottom -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_save"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:text="حفظ العميل"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        android:iconTint="@android:color/white"
+        app:icon="@drawable/wifi" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

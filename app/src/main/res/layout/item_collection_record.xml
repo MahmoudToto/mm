@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_record"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="2dp"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="3dp"
+    app:strokeWidth="2dp"
+    app:strokeColor="@android:color/transparent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="14dp">
+
+        <!-- ══ الصف الأول: نوع العملية + المبلغ + التاريخ ══ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="6dp">
+
+            <!-- بادج نوع العملية -->
+            <TextView
+                android:id="@+id/tv_record_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="3dp"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:layout_marginEnd="8dp" />
+
+            <!-- المبلغ -->
+            <TextView
+                android:id="@+id/tv_record_amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- التاريخ -->
+            <TextView
+                android:id="@+id/tv_record_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:textColor="#AAAAAA" />
+
+        </LinearLayout>
+
+        <!-- ══ الصف الثاني: بادج حالة الموافقة ══ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="الحالة: "
+                android:textSize="12sp"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:layout_marginEnd="6dp" />
+
+            <!-- بادج الحالة (انتظار / موافق / مرفوض) -->
+            <TextView
+                android:id="@+id/tv_record_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="3dp"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+        <!-- فاصل -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?attr/colorOutlineVariant"
+            android:layout_marginBottom="8dp" />
+
+        <!-- اسم العميل -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="👤 العميل: "
+                android:textSize="13sp"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+
+            <TextView
+                android:id="@+id/tv_record_receiver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="?attr/colorOnSurface" />
+
+        </LinearLayout>
+
+        <!-- رقم العميل -->
+        <TextView
+            android:id="@+id/tv_record_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#555555"
+            android:visibility="gone"
+            android:layout_marginBottom="2dp" />
+
+        <!-- الملاحظة -->
+        <TextView
+            android:id="@+id/tv_record_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#777777"
+            android:visibility="gone"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- ══ أزرار الإجراءات (مرئية للمدير فقط) ══
+             حالة انتظار  → زر1: موافقة   | زر2: رفض
+             حالة موافق/مرفوض → زر1: تعديل | زر2: حذف   -->
+        <LinearLayout
+            android:id="@+id/layout_action_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="6dp"
+            android:weightSum="2"
+            android:visibility="gone">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_action1"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:text="✔ موافقة"
+                app:cornerRadius="8dp"
+                style="@style/Widget.MaterialComponents.Button" />
+
+            <View android:layout_width="8dp" android:layout_height="0dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_action2"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textSize="13sp"
+                android:text="✖ رفض"
+                app:cornerRadius="8dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

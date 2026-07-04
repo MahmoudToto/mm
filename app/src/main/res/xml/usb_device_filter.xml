@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- فلتر عام بدون قيود على الـ class عشان يقرأ الطابعات الصينية والعادية فوراً -->
+    <usb-device />
+</resources>

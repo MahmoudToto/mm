@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature android:name="android.hardware.usb.host" android:required="true" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/mandopand"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/mandopand"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.محصلومندوب"
+        tools:targetApi="31">
+
+        <activity
+            android:name=".card_inventory"
+            android:exported="false" />
+
+        <!-- تعديل الـ PrintActivity: شيلنا فلتر الـ USB التلقائي وضفنا حماية الـ configChanges لمنع الـ Restart -->
+        <activity android:name=".PrintActivity"
+            android:label="طباعة الأوصال"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:launchMode="singleTask"
+            android:exported="false">
+
+            <!-- نضع الـ meta-data هنا فقط لتعريف الفلتر العام صامتاً بدون إجبار النظام على عمل Restart -->
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/usb_device_filter" />
+        </activity>
+
+        <activity android:name=".PrintPreviewActivity"
+            android:label="معاينة الأوصال"
+            android:exported="false"/>
+
+        <activity
+            android:name=".statistics"
+            android:exported="false" />
+        <activity
+            android:name=".clint"
+            android:exported="false" />
+        <activity
+            android:name=".card_collectors"
+            android:exported="false" />
+        <activity
+            android:name=".card_deliver_collection"
+            android:exported="false" />
+        <activity
+            android:name=".add_salesperson"
+            android:exported="false" />
+        <activity
+            android:name=".card_filter"
+            android:exported="false" />
+        <activity
+            android:name=".delete_collector"
+            android:exported="false" />
+        <activity
+            android:name=".card_products"
+            android:exported="false" />
+        <activity
+            android:name=".dleit_clin"
+            android:exported="false" />
+        <activity
+            android:name=".set_cline"
+            android:exported="false" />
+        <activity
+            android:name=".AddAmuel"
+            android:exported="false" />
+        <activity
+            android:name=".Home"
+            android:exported="false" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".UsersActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".CollectionManagerActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+    </application>
+
+</manifest>

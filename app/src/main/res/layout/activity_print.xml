@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F4F8"
+    android:layoutDirection="rtl">
+
+    <!-- ══ AppBar ══ -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1565C0"
+        app:elevation="0dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="🖨️ طباعة الوصلات"
+            app:titleTextColor="@android:color/white"
+            android:background="@null" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="90dp"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <!-- ══ بطاقة الطابعة ══ -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="🖨️ الطابعة"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="#1565C0" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_detect_printer"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:text="اكتشاف"
+                            android:textSize="13sp"
+                            android:textColor="#1565C0"
+                            app:strokeColor="#1565C0"
+                            app:cornerRadius="10dp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_printer_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="⚠️ لم يتم اكتشاف طابعة بعد"
+                        android:textSize="13sp"
+                        android:textColor="#E65100" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ══ بطاقة الاختيار ══ -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📋 اختيار البيانات"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#1565C0"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- المستخدم -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="المندوب"
+                        android:textSize="12sp"
+                        android:textColor="#666"
+                        android:layout_marginBottom="4dp" />
+
+                    <Spinner
+                        android:id="@+id/spinner_user"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/spinner_border"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp" />
+
+                    <!-- السنة + الشهر -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="12dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginEnd="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="السنة"
+                                android:textSize="12sp"
+                                android:textColor="#666"
+                                android:layout_marginBottom="4dp" />
+
+                            <Spinner
+                                android:id="@+id/spinner_year"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:background="@drawable/spinner_border"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="12dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="الشهر (Firebase)"
+                                android:textSize="12sp"
+                                android:textColor="#666"
+                                android:layout_marginBottom="4dp" />
+
+                            <Spinner
+                                android:id="@+id/spinner_month"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:background="@drawable/spinner_border"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="12dp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_load_sales"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:text="📥 تحميل الفواتير"
+                        android:textSize="14sp"
+                        app:backgroundTint="#1565C0"
+                        app:cornerRadius="12dp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ══ حالة التحميل ══ -->
+            <ProgressBar
+                android:id="@+id/progress_print"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:indeterminateTint="#1565C0" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="13sp"
+                android:textColor="#555"
+                android:gravity="center"
+                android:layout_marginBottom="8dp" />
+
+            <!-- ══ قائمة الفواتير ══ -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_invoices"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginBottom="12dp" />
+
+            <!-- ══ بطاقة فلاتر الأقساط ══ -->
+            <LinearLayout
+                android:id="@+id/layout_filters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="📅 اختيار الأقساط"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="#1565C0"
+                            android:layout_marginBottom="12dp" />
+
+                        <RadioGroup
+                            android:id="@+id/rg_installment_mode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/rb_all_installments"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="كل الأقساط"
+                                android:checked="true"
+                                android:textSize="14sp" />
+
+                            <RadioButton
+                                android:id="@+id/rb_by_number"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="حسب رقم القسط"
+                                android:textSize="14sp" />
+
+                            <RadioButton
+                                android:id="@+id/rb_by_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="حسب الشهر/السنة"
+                                android:textSize="14sp" />
+
+                        </RadioGroup>
+
+                        <!-- اختيار رقم القسط -->
+                        <LinearLayout
+                            android:id="@+id/layout_by_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            android:layout_marginTop="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="اختر رقم القسط:"
+                                android:textSize="13sp"
+                                android:textColor="#555"
+                                android:layout_marginBottom="6dp" />
+
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/cg_installment_numbers"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:singleSelection="false" />
+
+                        </LinearLayout>
+
+                        <!-- اختيار الشهر/السنة -->
+                        <LinearLayout
+                            android:id="@+id/layout_by_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+                            android:layout_marginTop="10dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginEnd="8dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="السنة"
+                                    android:textSize="11sp"
+                                    android:textColor="#666"
+                                    android:layout_marginBottom="4dp" />
+
+                                <Spinner
+                                    android:id="@+id/spinner_installment_year"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="44dp"
+                                    android:background="@drawable/spinner_border"
+                                    android:paddingStart="10dp"
+                                    android:paddingEnd="10dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="الشهر"
+                                    android:textSize="11sp"
+                                    android:textColor="#666"
+                                    android:layout_marginBottom="4dp" />
+
+                                <Spinner
+                                    android:id="@+id/spinner_installment_month"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="44dp"
+                                    android:background="@drawable/spinner_border"
+                                    android:paddingStart="10dp"
+                                    android:paddingEnd="10dp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- ══ زر الطباعة الثابت ══ -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_print"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom"
+        android:layout_margin="14dp"
+        android:text="🖨️ طباعة"
+        android:textSize="16sp"
+        android:textColor="@android:color/white"
+        android:visibility="gone"
+        app:backgroundTint="#1565C0"
+        app:cornerRadius="16dp"
+        app:elevation="8dp" />
+    <!-- WebView مخفي يُستخدم لتحويل الوصل (HTML) إلى Bitmap قبل
+         الطباعة المباشرة عبر USB أو المعاينة. الأبعاد هنا احتياطية
+         فقط؛ الأبعاد الفعلية المستخدمة عند التصوير تُحدَّد برمجياً
+         عبر measure()/layout() في PrintActivity (انظر RENDER_W/RENDER_H) -->
+    <WebView
+        android:id="@+id/wv_offscreen"
+        android:layout_width="1754px"
+        android:layout_height="620px"
+        android:visibility="invisible" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

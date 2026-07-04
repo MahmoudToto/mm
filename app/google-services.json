@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "951207145413",
+    "firebase_url": "https://myfoter-default-rtdb.firebaseio.com",
+    "project_id": "myfoter",
+    "storage_bucket": "myfoter.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:951207145413:android:5f76599afe30e5946ce5ac",
+        "android_client_info": {
+          "package_name": "mhsal.mndop.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvgrIbNknPjMba8JLqqP2Zfjl4YUdUaTs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
