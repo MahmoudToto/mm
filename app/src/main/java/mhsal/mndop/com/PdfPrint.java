@@ -43,8 +43,6 @@ public class PdfPrint {
 
                 canvas.drawColor(Color.WHITE);
 
-                canvas.translate(-10, 0);
-
                 webView.draw(canvas);
                 // تحويل للـ PCL
                 byte[] pcl = buildPcl(bmp, contentWidth, measuredHeight);

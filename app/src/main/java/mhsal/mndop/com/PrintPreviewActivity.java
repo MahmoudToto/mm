@@ -151,9 +151,11 @@ public class PrintPreviewActivity extends AppCompatActivity {
             try {
                 WebView printView = new WebView(PrintPreviewActivity.this);
                 printView.getSettings().setJavaScriptEnabled(true);
-                printView.getSettings().setUseWideViewPort(true);
-                printView.getSettings().setLoadWithOverviewMode(true);
-                printView.setInitialScale(100);
+                // نفس إعدادات WebViewReceiptRenderer: بدون wide viewport حتى
+                // تتطابق عرض الصفحة (CSS) مع عرض الالتقاط في PdfPrint (750px)،
+                // وإلا يتمدد المحتوى لـ 980px ويُقص الطرف الأيمن من الوصل
+                printView.getSettings().setUseWideViewPort(false);
+                printView.getSettings().setLoadWithOverviewMode(false);
 
                 String printStyle = "<style>"
                         + "html, body { margin: 0 !important; padding: 10px 30px 10px 10px !important; background: #fff; direction: rtl !important; }"

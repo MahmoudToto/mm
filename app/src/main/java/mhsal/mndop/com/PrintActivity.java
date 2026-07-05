@@ -420,11 +420,8 @@ public class PrintActivity extends AppCompatActivity {
                 }
             };
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                appContext.registerReceiver(dynamicReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
-            } else {
-                appContext.registerReceiver(dynamicReceiver, filter);
-            }
+            androidx.core.content.ContextCompat.registerReceiver(appContext, dynamicReceiver, filter,
+                    androidx.core.content.ContextCompat.RECEIVER_NOT_EXPORTED);
 
             int flags = PendingIntent.FLAG_UPDATE_CURRENT;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
